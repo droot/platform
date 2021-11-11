@@ -1,0 +1,18 @@
+apiVersion: fn.kpt.dev/v1alpha1
+kind: StarlarkRun
+metadata:
+  name: ns-invariant
+source: |
+  def ensure_one_namespace(resource_list):
+    # number of namespaces per pkg
+    num_ns_per_pkg = {}
+    for resource in resource_list["items"]:
+      if resource["apiVersion"] == "v1" and resource["kind"] == "Namespace":
+        pkg = resource["metadata"]["annotations"]["internal.config.kubernetes.io/package-path"]
+        num_ns = num_ns_per_pkg.get(pkg, 0)
+        num_ns += 1
+        if num_ns > 1:
+          fail("pkg must contain single namespace")
+        num_ns_per_pkg[pkg] = num_ns
+
+  ensure_one_namespace(ctx.resource_list)
