@@ -7,15 +7,15 @@ upstream:
   git:
     repo: git@github.com:droot/pkg-catalog
     directory: /tenant
-    ref: v0.1
+    ref: tenant/v0.2
   updateStrategy: resource-merge
 upstreamLock:
   type: git
   git:
     repo: git@github.com:droot/pkg-catalog
     directory: /tenant
-    ref: tenant/v0.1
-    commit: c87326bc0f12b528db6e071427e950ec1a9b3e60
+    ref: tenant/v0.2
+    commit: adeae4ac658ba250b448f13710e802b45f30cb71
 info:
   description: Base tenant package
 pipeline:

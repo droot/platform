@@ -8,6 +8,6 @@ spec:
     requests.cpu: "1"
     requests.memory: 1Gi
     limits.cpu: "2"
-    limits.memory: 4Gi
+    limits.memory: 6Gi
     persistentvolumeclaims: "5"
     requests.storage: 10Gi
