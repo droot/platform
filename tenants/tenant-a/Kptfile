@@ -1,0 +1,28 @@
+apiVersion: kpt.dev/v1
+kind: Kptfile
+metadata:
+  name: tenant-a
+upstream:
+  type: git
+  git:
+    repo: git@github.com:droot/pkg-catalog
+    directory: /tenant
+    ref: v0.3
+  updateStrategy: resource-merge
+upstreamLock:
+  type: git
+  git:
+    repo: git@github.com:droot/pkg-catalog
+    directory: /tenant
+    ref: tenant/v0.3
+    commit: 147c8918447251c92be90ed8d8da1a0cac3faf71
+info:
+  description: Base tenant package
+pipeline:
+  mutators:
+    - image: set-namespace:v0.1
+      configMap:
+        namespace: tenant-a
+  validators:
+    - image: gcr.io/kpt-fn/starlark:v0.3
+      configPath: ns-invariant.yaml
