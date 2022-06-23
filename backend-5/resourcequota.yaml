@@ -6,4 +6,4 @@ metadata: # kpt-merge: example/default
 spec:
   hard:
     cpu: "40"
-    memory: 40G
+    memory: 60G

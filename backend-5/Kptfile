@@ -9,14 +9,14 @@ upstream:
   git:
     repo: https://github.com/droot/pkg-catalog.git
     directory: basens
-    ref: basens/v0
+    ref: basens/v1
 upstreamLock:
   type: git
   git:
     repo: https://github.com/droot/pkg-catalog.git
     directory: basens
-    ref: basens/v0
-    commit: b3e1d439516a5e8d49adc0c82d3e95578570dbfa
+    ref: basens/v1
+    commit: 90ed7b75b03b44812841c459c2d35f891a237fea
 info:
   description: kpt package for provisioning namespace
 pipeline:
