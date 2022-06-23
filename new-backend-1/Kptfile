@@ -1,0 +1,25 @@
+apiVersion: kpt.dev/v1
+kind: Kptfile
+metadata: # kpt-merge: /new-backend-1
+  name: new-backend-1
+  annotations:
+    config.kubernetes.io/local-config: "true"
+upstream:
+  type: git
+  git:
+    repo: https://github.com/droot/pkg-catalog.git
+    directory: new-blueprint
+    ref: new-blueprint/v1
+upstreamLock:
+  type: git
+  git:
+    repo: https://github.com/droot/pkg-catalog.git
+    directory: new-blueprint
+    ref: new-blueprint/v1
+    commit: 2ecfe86e07d1225e4468a39fec5ea3cb21d7a0d7
+info:
+  description: sample description
+pipeline:
+  mutators:
+  - image: set-namespace:v0.4.1
+    configPath: package-context.yaml
